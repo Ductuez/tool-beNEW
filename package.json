@@ -1,0 +1,58 @@
+{
+  "name": "toolbe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "babel src -d dist",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint --fix 'src/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ductuez/toolBE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ductuez/toolBE/issues"
+  },
+  "homepage": "https://github.com/Ductuez/toolBE#readme",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.21.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "moment-timezone": "^0.5.43",
+    "mongodb": "^5.2.0",
+    "mongoose": "^6.4.0",
+    "mqtt": "^4.3.7",
+    "node-fetch": "^3.3.1",
+    "nodemon": "^2.0.22",
+    "postman-request": "^2.88.1-postman.32",
+    "ramda": "^0.29.0",
+    "redis": "^4.6.6",
+    "socket.io": "^4.6.1"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-console": "warn"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2"
+  }
+}
