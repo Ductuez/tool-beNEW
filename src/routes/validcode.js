@@ -19,7 +19,6 @@ router.get('/', async function (req, res) {
         body: JSON.stringify({ foo: 'bar' }),
       },
       (err, httpResponse, body) => {
-        console.log(err, 'errerr')
         res.send(JSON.parse(body))
       }
     )

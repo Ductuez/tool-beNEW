@@ -136,8 +136,6 @@ router.post('/173mbtk45s', async (req, res) => {
   const { method, gameId = 173 } = req.body || {}
   var ketQuaTruoc = {}
 
-  console.log(req.body, 'req.bodyreq.body')
-
   const ketQua = await khoiTaoBetGame({ method, req, gameId })
 
   const tokenTk88 = ketQua.tokenTk88

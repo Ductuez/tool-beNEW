@@ -34,7 +34,6 @@ router.post('/', async (req, res) => {
       body: JSON.stringify(duLieuTuyChinh),
     },
     async (err, httpResponse, body) => {
-      console.log(body, 'body');
       res.send(JSON.parse(body))
     }
   )

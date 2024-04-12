@@ -97,7 +97,7 @@ app.get('/', async (req, res) => {
         method: 'GET',
       },
       (err, httpResponse, body) => {
-        console.log(err, 'errerr')
+        console.log(err, body, 'errerr')
         res.send(JSON.parse(body))
       }
     )

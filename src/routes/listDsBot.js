@@ -36,6 +36,7 @@ router.post('/add', async (req, res) => {
 
 router.get('/list', async (req, res) => {
   const token = getToken(req)
+  console.log(token)
   const { userId } = getUserSystem(token)
 
   try {

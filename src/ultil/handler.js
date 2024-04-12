@@ -272,86 +272,84 @@ export const handlerStartGameBot = async ({
               isTai,
             })
           } else {
-            const ketQua = ketQuaXoSo(gameId).then(async (result) => {
-              const haiSoCuoi = layHaiSoCuoi(result?.t?.issueList[0]?.openNum)
-              const { ketQuaTruocTX, ketQuaTruocChanLe, moneyBetCl, moneyBetTx } = ketQuaTruoc
+            // const haiSoCuoi = layHaiSoCuoi(result?.t?.issueList[0]?.openNum)
+            const { ketQuaTruocTX, ketQuaTruocChanLe, moneyBetCl, moneyBetTx } = ketQuaTruoc
 
-              const laChan = haiSoCuoi % 2 === 0
-              const laTai = haiSoCuoi >= 50
+            const laChan = true // haiSoCuoi % 2 === 0
+            const laTai = true //haiSoCuoi >= 50
 
-              const isWinChanLe = areEqual(laChan, ketQuaTruocChanLe)
-              const isWinTaiXiu = areEqual(laTai, ketQuaTruocTX)
+            const isWinChanLe = areEqual(laChan, ketQuaTruocChanLe)
+            const isWinTaiXiu = areEqual(laTai, ketQuaTruocTX)
 
-              indexLoseChanLe = isWinChanLe ? 0 : indexLoseChanLe + 1
-              indexLoseTX = isWinTaiXiu ? 0 : indexLoseTX + 1
+            indexLoseChanLe = isWinChanLe ? 0 : indexLoseChanLe + 1
+            indexLoseTX = isWinTaiXiu ? 0 : indexLoseTX + 1
 
-              indexWinChanLe = isWinChanLe ? indexWinChanLe + 1 : 0
-              indexWinTX = isWinTaiXiu ? indexWinTX + 1 : 0
-              count = count + 1
-              if (count === von.length) {
-                count = 0
-              }
-              const multipleCLTXFn = multipleCLTX({
-                isWinChanLe,
+            indexWinChanLe = isWinChanLe ? indexWinChanLe + 1 : 0
+            indexWinTX = isWinTaiXiu ? indexWinTX + 1 : 0
+            count = count + 1
+            if (count === von.length) {
+              count = 0
+            }
+            const multipleCLTXFn = multipleCLTX({
+              isWinChanLe,
+              indexLoseChanLe,
+              indexLoseTX,
+              von,
+              baseMultipleCL,
+              isWinTaiXiu,
+              methodCauTx,
+              methodCauCL,
+              baseMultipleTX,
+              transformedCL,
+              chuyenDoiTX,
+              indexWinChanLe,
+              indexWinTX,
+              indexWinChanLe,
+              indexWinTX,
+              tangGiaTri,
+              count,
+            })
+
+            multipleChanLe = multipleCLTXFn.multipleChanLe
+            multipleTx = multipleCLTXFn.multipleTx
+            betInfoTX = multipleCLTXFn.betInfoTX
+            playTX = multipleCLTXFn.playTX
+            betInfoCL = multipleCLTXFn.betInfoCL
+            playCL = multipleCLTXFn.playCL
+
+            const ketQua = await xuLyLoseWinCount({ BotBet, isWinChanLe, isWinTaiXiu, moneyBetCl, moneyBetTx, botId })
+
+            const { newMoneyBotBet } = ketQua
+
+            if (newMoneyBotBet > moneyWinEnd || newMoneyBotBet < -moneyLoseEnd) {
+              clearInterval(gameIntervalID)
+            } else {
+              handlerTurnBet({
+                isWin,
+                method,
+                tokenTk88,
                 indexLoseChanLe,
                 indexLoseTX,
-                von,
-                baseMultipleCL,
+                gameId,
+                turnNow: turnNum,
+                userId,
+                username,
+                multipleTx,
+                multipleChanLe,
+                betInfoCL,
+                playCL,
+                betInfoTX,
+                playTX,
+                ketQuaTruoc,
+                winMoney,
+                botBetGame,
+                isWinChanLe,
                 isWinTaiXiu,
-                methodCauTx,
-                methodCauCL,
-                baseMultipleTX,
-                transformedCL,
-                chuyenDoiTX,
                 indexWinChanLe,
                 indexWinTX,
-                indexWinChanLe,
-                indexWinTX,
-                tangGiaTri,
-                count,
+                isTai,
               })
-
-              multipleChanLe = multipleCLTXFn.multipleChanLe
-              multipleTx = multipleCLTXFn.multipleTx
-              betInfoTX = multipleCLTXFn.betInfoTX
-              playTX = multipleCLTXFn.playTX
-              betInfoCL = multipleCLTXFn.betInfoCL
-              playCL = multipleCLTXFn.playCL
-
-              const ketQua = await xuLyLoseWinCount({ BotBet, isWinChanLe, isWinTaiXiu, moneyBetCl, moneyBetTx, botId })
-
-              const { newMoneyBotBet } = ketQua
-
-              if (newMoneyBotBet > moneyWinEnd || newMoneyBotBet < -moneyLoseEnd) {
-                clearInterval(gameIntervalID)
-              } else {
-                handlerTurnBet({
-                  isWin,
-                  method,
-                  tokenTk88,
-                  indexLoseChanLe,
-                  indexLoseTX,
-                  gameId,
-                  turnNow: turnNum,
-                  userId,
-                  username,
-                  multipleTx,
-                  multipleChanLe,
-                  betInfoCL,
-                  playCL,
-                  betInfoTX,
-                  playTX,
-                  ketQuaTruoc,
-                  winMoney,
-                  botBetGame,
-                  isWinChanLe,
-                  isWinTaiXiu,
-                  indexWinChanLe,
-                  indexWinTX,
-                  isTai,
-                })
-              }
-            })
+            }
           }
           checkFirst = false
         },
