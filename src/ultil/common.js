@@ -102,7 +102,7 @@ export const handlerTurnBet = async ({
   ketQuaTruoc.moneyBetCl = multipleChanLe
   ketQuaTruoc.moneyBetTx = multipleTx
 
-  console.log(isTai, 'isTai')
+  console.log(multipleChanLe, '==> isTai')
 
   const duLieuTuyChinh = {
     gameId,
@@ -114,8 +114,8 @@ export const handlerTurnBet = async ({
         // betInfo: valueRandomChanLe ? 'Chẵn' : 'Lẻ',
         // play: valueRandomChanLe ? 'CHAN' : 'LE',
 
-        betInfo: isTai ? 'Lẻ' : 'Chẵn',
-        play: isTai ? 'LE' : 'CHAN',
+        betInfo: isTai ? 'Tài' : 'Xỉu',
+        play: isTai ? 'LON' : 'NHO',
         multiple: multipleChanLe,
         money: 1000,
         playCate: 'GDL2S',
@@ -221,7 +221,7 @@ export const xuLyLoseWinCount = async ({ BotBet, isWinChanLe, isWinTaiXiu, money
     (isWinChanLe ? moneyBetCl * 1000 * 0.997 : -moneyBetCl * 1000) +
     (isWinTaiXiu ? moneyBetTx * 1000 * 0.997 : -moneyBetTx * 1000)
 
-  botBetGame.moneyWin = newMoneyBotBet
+  // botBetGame.moneyWin = newMoneyBotBet
   botBetGame.winCount = winCount || 0
   botBetGame.loseCount = loseCount || 0
 

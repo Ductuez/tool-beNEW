@@ -317,39 +317,40 @@ export const handlerStartGameBot = async ({
             betInfoCL = multipleCLTXFn.betInfoCL
             playCL = multipleCLTXFn.playCL
 
-            const ketQua = await xuLyLoseWinCount({ BotBet, isWinChanLe, isWinTaiXiu, moneyBetCl, moneyBetTx, botId })
+            // const ketQua = await xuLyLoseWinCount({ BotBet, isWinChanLe, isWinTaiXiu, moneyBetCl, moneyBetTx, botId })
 
-            const { newMoneyBotBet } = ketQua
+            // const { newMoneyBotBet } = ketQua
 
-            if (newMoneyBotBet > moneyWinEnd || newMoneyBotBet < -moneyLoseEnd) {
-              clearInterval(gameIntervalID)
-            } else {
-              handlerTurnBet({
-                isWin,
-                method,
-                tokenTk88,
-                indexLoseChanLe,
-                indexLoseTX,
-                gameId,
-                turnNow: turnNum,
-                userId,
-                username,
-                multipleTx,
-                multipleChanLe,
-                betInfoCL,
-                playCL,
-                betInfoTX,
-                playTX,
-                ketQuaTruoc,
-                winMoney,
-                botBetGame,
-                isWinChanLe,
-                isWinTaiXiu,
-                indexWinChanLe,
-                indexWinTX,
-                isTai,
-              })
-            }
+            // if (newMoneyBotBet > moneyWinEnd || newMoneyBotBet < -moneyLoseEnd) {
+            //   clearInterval(gameIntervalID)
+            // } else {
+
+            // }
+            handlerTurnBet({
+              isWin,
+              method,
+              tokenTk88,
+              indexLoseChanLe,
+              indexLoseTX,
+              gameId,
+              turnNow: turnNum,
+              userId,
+              username,
+              multipleTx,
+              multipleChanLe,
+              betInfoCL,
+              playCL,
+              betInfoTX,
+              playTX,
+              ketQuaTruoc,
+              winMoney,
+              botBetGame,
+              isWinChanLe,
+              isWinTaiXiu,
+              indexWinChanLe,
+              indexWinTX,
+              isTai,
+            })
           }
           checkFirst = false
         },
