@@ -150,12 +150,12 @@ export const handlerTurnBet = async ({
           reject(err)
           return
         }
-        const check = await checkToken88(tokenTk88)
-        let infoUser = await User.findOne({ tokenBet: tokenTk88 })
+        // const check = await checkToken88(tokenTk88)
+        // let infoUser = await User.findOne({ tokenBet: tokenTk88 })
 
-        infoUser.money = check?.t || 0
+        // infoUser.money = check?.t || 0
 
-        await infoUser.save()
+        // await infoUser.save()
         resolve(JSON.parse(body))
       }
     )
