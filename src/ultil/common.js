@@ -102,6 +102,9 @@ export const handlerTurnBet = async ({
   ketQuaTruoc.moneyBetCl = multipleChanLe
   ketQuaTruoc.moneyBetTx = multipleTx
 
+  console.log(valueRandomTX, '<== valueRandomTX')
+  console.log(multipleTx, '<== multipleTx')
+
   console.log(multipleChanLe, '==> isTai')
 
   const duLieuTuyChinh = {
@@ -114,9 +117,9 @@ export const handlerTurnBet = async ({
         // betInfo: valueRandomChanLe ? 'Chẵn' : 'Lẻ',
         // play: valueRandomChanLe ? 'CHAN' : 'LE',
 
-        betInfo: isTai ? 'Tài' : 'Xỉu',
-        play: isTai ? 'LON' : 'NHO',
-        multiple: multipleChanLe,
+        betInfo: valueRandomTX ? 'Tài' : 'Xỉu',
+        play: valueRandomTX ? 'LON' : 'NHO',
+        multiple: multipleTx,
         money: 1000,
         playCate: 'GDL2S',
       },

@@ -272,11 +272,12 @@ export const handlerStartGameBot = async ({
               isTai,
             })
           } else {
-            // const haiSoCuoi = layHaiSoCuoi(result?.t?.issueList[0]?.openNum)
+            const resultKQ = await ketQuaXoSo(gameId)
+            const haiSoCuoi = layHaiSoCuoi(resultKQ?.t?.issueList[0]?.openNum)
             const { ketQuaTruocTX, ketQuaTruocChanLe, moneyBetCl, moneyBetTx } = ketQuaTruoc
 
-            const laChan = true // haiSoCuoi % 2 === 0
-            const laTai = true //haiSoCuoi >= 50
+            const laChan = haiSoCuoi % 2 === 0
+            const laTai = haiSoCuoi >= 50
 
             const isWinChanLe = areEqual(laChan, ketQuaTruocChanLe)
             const isWinTaiXiu = areEqual(laTai, ketQuaTruocTX)
