@@ -1,4 +1,4 @@
-export const API = 'https://api.tk88.house/api'
+export const API = 'https://api.996227.com/api'
 export const options = {
   // body: JSON.stringify({ foo: "bar" }),
 

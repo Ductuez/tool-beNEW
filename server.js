@@ -28,11 +28,11 @@ import { verifyToken } from './src/ultil/common.js'
 import { options } from './constans.js'
 
 const apiProxy = createProxyMiddleware('/', {
-  target: 'https://api.tk88.house', // Thay đổi địa chỉ tương ứng với trang web mà bạn muốn proxy
+  target: 'https://tk88.996227.com', // Thay đổi địa chỉ tương ứng với trang web mà bạn muốn proxy
   changeOrigin: true, // Thay đổi host và origin trong yêu cầu gửi đi
 })
 
-const uri = 'mongodb://127.0.0.1:27017/'
+const uri = 'mongodb://localhost:27017/?directConnection=true'
 
 const client = new MongoClient(uri, {
   serverApi: {

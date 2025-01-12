@@ -8,9 +8,11 @@ const router = express.Router()
 router.get('/', async function (req, res) {
   try {
     const token = getToken(req)
+
     const { userId } = getUserSystem(token)
 
     let infoUser = await User.findByIdAndUpdate(userId)
+
     const expiredToken88 = await checkToken88(infoUser.tokenBet)
     if (!expiredToken88.success) {
       infoUser.tokenBet = ''

@@ -185,24 +185,29 @@ export const ketQuaXoSo = async (data) => {
 }
 
 export const checkToken88 = async (tokenTk88) => {
-  return new Promise((resolve, reject) => {
-    request(
-      {
-        ...options,
-        url: `${API}/front/user/money`,
-        method: 'GET',
-        headers: {
-          ...options.headers,
-          'x-session-token': tokenTk88,
+  if (tokenTk88) {
+    return new Promise((resolve, reject) => {
+      request(
+        {
+          ...options,
+          url: `${API}/front/user/money`,
+          method: 'GET',
+          headers: {
+            ...options.headers,
+            referer: API,
+            'x-session-token': tokenTk88,
+          },
         },
-      },
-      async (err, httpResponse, body) => {
-        if (err) return reject(err)
+        async (err, httpResponse, body) => {
+          console.log(body, err, 'bodybodybodybody')
 
-        resolve(JSON.parse(body))
-      }
-    )
-  })
+          if (err) return reject(err)
+
+          resolve(JSON.parse(body))
+        }
+      )
+    })
+  }
 }
 
 export const handleSocket = () => {
